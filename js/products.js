@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             productsArray = resultObj.data;
             showProductsList(productsArray);
-            document.getElementById("categorias-nombre").innerHTML = "estas en la categoria de " + productsArray.catName;
+            document.getElementById("categorias-nombre").innerHTML = "Verás aquí todos los productos de la categoría " + productsArray.catName;
         }
     });
 });
