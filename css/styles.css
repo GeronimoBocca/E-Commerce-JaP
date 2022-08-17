@@ -201,3 +201,27 @@ a.custom-card:hover {
   text-align: center;
   padding-bottom: 3%;
 }
+
+.imagen-login {
+  width: 400px;
+  margin-top: 1%;
+  margin-left: 37%;
+  padding-bottom: 0.5%;
+}
+
+#titulo-login {
+  text-align: center;
+}
+
+#datitos {
+  text-align: center;
+  color: gray;
+}
+
+#oculto-email, #oculto-password {
+  display: none;
+}
+
+#email {
+  margin-bottom: 5px;
+}
