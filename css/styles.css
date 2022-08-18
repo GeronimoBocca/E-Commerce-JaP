@@ -220,6 +220,7 @@ a.custom-card:hover {
 
 #oculto-email, #oculto-password {
   display: none;
+  color: red;
 }
 
 #email {

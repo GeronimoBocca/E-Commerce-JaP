@@ -13,13 +13,11 @@ function login() {
     
     else if (email.value === "") {
         oculto1.style.display = "block";
-        oculto1.style.color = "red";
         email.classList.add("is-invalid");
     }
 
     if (contraseña.value === "") {
         oculto2.style.display = "block";
-        oculto2.style.color = "red";
         contraseña.classList.add("is-invalid");
     }
 }
@@ -27,5 +25,15 @@ function login() {
 document.addEventListener('DOMContentLoaded', () => {
     boton.addEventListener("click", () => {
         login();
+    });
+
+    email.addEventListener('keydown', () => {
+        email.classList.remove("is-invalid");
+        oculto1.style.display = "none";
+    });
+
+    contraseña.addEventListener('keydown', () => {
+        contraseña.classList.remove("is-invalid");
+        oculto2.style.display = "none";
     });
 });
