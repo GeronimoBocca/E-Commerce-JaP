@@ -6,14 +6,17 @@ let boton = document.getElementById("login-enviar");
 
 function login() {
     if (email.value !== "" && contraseña.value !== ""){
-        window.location.href = "index.html"
-        sessionStorage.setItem("email", email);
+        localStorage.setItem("email", JSON.stringify(email.value));
+        localStorage.setItem("contraseña", JSON.stringify(contraseña.value));
+        window.location.href = "index.html";
     }
+    
     else if (email.value === "") {
         oculto1.style.display = "block";
         oculto1.style.color = "red";
         email.classList.add("is-invalid");
     }
+
     if (contraseña.value === "") {
         oculto2.style.display = "block";
         oculto2.style.color = "red";
@@ -26,5 +29,3 @@ document.addEventListener('DOMContentLoaded', () => {
         login();
     });
 });
-
-
