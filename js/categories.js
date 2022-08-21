@@ -6,6 +6,11 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+function cerrarSesion() {
+    localStorage.removeItem("Usuario");
+    window.location.href = "login.html";
+}
+
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
@@ -92,6 +97,10 @@ document.addEventListener("DOMContentLoaded", function(e){
     if (localStorage.getItem("Usuario") === null) {
         window.location.href = "login.html";
         }
+
+        document.getElementById("cerrar-session").addEventListener("click", () => {
+            cerrarSesion();
+        });
 
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){

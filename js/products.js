@@ -1,5 +1,10 @@
 //array donde se cargarán los datos recibidos:
 
+function cerrarSesion() {
+    localStorage.removeItem("Usuario");
+    window.location.href = "login.html";
+}
+
 let productsArray = [];
 
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
@@ -43,6 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("Usuario") === null) {
         window.location.href = "login.html";
         }
+
+        document.getElementById("cerrar-session").addEventListener("click", () => {
+            cerrarSesion();
+        });
 
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok")

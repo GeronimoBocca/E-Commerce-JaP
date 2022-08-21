@@ -1,3 +1,8 @@
+function cerrarSesion() {
+    localStorage.removeItem("Usuario");
+    window.location.href = "login.html";
+}
+
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;
@@ -32,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function(e){
     if (localStorage.getItem("Usuario") === null) {
         window.location.href = "login.html";
         }
+
+        document.getElementById("cerrar-session").addEventListener("click", () => {
+            cerrarSesion();
+        });
 
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
