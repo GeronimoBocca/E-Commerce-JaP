@@ -39,6 +39,11 @@ EJECUCIÓN:
 */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    if (localStorage.getItem("Usuario") === null) {
+        window.location.href = "login.html";
+        }
+
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {

@@ -3,11 +3,14 @@ let oculto2 = document.getElementById("oculto-password");
 let email = document.getElementById("email");
 let contraseña = document.getElementById("password");
 let boton = document.getElementById("login-enviar");
+let usuario = {email};
 
 function login() {
     if (email.value !== "" && contraseña.value !== ""){
-        localStorage.setItem("email", JSON.stringify(email.value));
-        localStorage.setItem("contraseña", JSON.stringify(contraseña.value));
+        localStorage.setItem("Usuario", JSON.stringify({
+            email: email.value,
+            password: contraseña.value,
+            }));
         window.location.href = "index.html";
     }
     

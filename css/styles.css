@@ -227,3 +227,12 @@ a.custom-card:hover {
   margin-bottom: 5px;
 }
 
+.centrado {
+  text-align: center;
+  color: gray;
+  margin-top: 15px;
+}
+
+.g-signin2 {
+  margin-left: 46%;
+}

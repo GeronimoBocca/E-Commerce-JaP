@@ -1,19 +1,13 @@
 function cerrarSesion() {
-    localStorage.removeItem("email");
-    localStorage.removeItem("contraseña");
+    localStorage.removeItem("Usuario");
     window.location.href = "login.html";
-}
-
-function nadie() {
-    if (localStorage.getItem("email") === null) {
-    alert("Usted debe Iniciar Sesión");
-    window.location.href = "login.html";
-    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    nadie();
+    if (localStorage.getItem("Usuario") === null) {
+        window.location.href = "login.html";
+        }
 
     document.getElementById("cerrar-session").addEventListener("click", () => {
         cerrarSesion();
