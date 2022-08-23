@@ -110,6 +110,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 
+    document.getElementById(category.id).addEventListener("click", () => {
+        setCatID();
+    })
+
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });

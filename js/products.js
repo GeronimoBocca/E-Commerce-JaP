@@ -53,7 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
             cerrarSesion();
         });
 
-    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        let catID = localStorage.getItem("catID");
+
+
+    getJSONData(PRODUCTS_URL+ catID +EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             productsArray = resultObj.data;

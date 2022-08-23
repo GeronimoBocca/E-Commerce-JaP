@@ -189,7 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-#productos {
+#encabezado {
   font-family: 'Raleway', serif !important;
   text-align: center;
   margin-top: 2%;
@@ -197,9 +197,11 @@ a.custom-card:hover {
 
 #categorias-nombre {
   font-family: 'Raleway', serif !important;
-  color: gray;
+  color: #212529;;
   text-align: center;
   padding-bottom: 3%;
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 .imagen-login {
@@ -215,7 +217,7 @@ a.custom-card:hover {
 
 #datitos {
   text-align: center;
-  color: gray;
+  color: #212529;;
 }
 
 #oculto-email, #oculto-password {
@@ -229,10 +231,15 @@ a.custom-card:hover {
 
 .centrado {
   text-align: center;
-  color: gray;
+  color: #212529;;
   margin-top: 15px;
 }
 
 .g-signin2 {
   margin-left: 46%;
+}
+
+.encabezado {
+  font-family: 'Raleway', serif !important;
+  text-align: center;
 }
