@@ -1,5 +1,3 @@
-//array donde se cargarán los datos recibidos:
-
 function cerrarSesion() {
     localStorage.removeItem("Usuario");
     window.location.href = "login.html";
@@ -7,7 +5,6 @@ function cerrarSesion() {
 
 let productsArray = [];
 
-//función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showProductsList(array){
     let htmlContentToAppend = "";
     for(let i = 0; i < array.products.length; i++){ 
@@ -33,15 +30,6 @@ function showProductsList(array){
        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
     }
 }
-
-/* 
-EJECUCIÓN:
-
--Al cargar la página se llama a getJSONData() pasándole por parámetro la dirección para obtener el listado.
--Se verifica el estado del objeto que devuelve, y, si es correcto, se cargan los datos en categoriesArray.
--Por último, se llama a showCategoriesList() pasándole por parámetro categoriesArray.
-
-*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
