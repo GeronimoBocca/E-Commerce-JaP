@@ -243,3 +243,43 @@ a.custom-card:hover {
   font-family: 'Raleway', serif !important;
   text-align: center;
 }
+
+#user {
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 8px;
+}
+
+#desplegable {
+  list-style: none;
+  position: absolute;
+  margin-top: 2.8%;
+  margin-left: 77.5%;
+  padding: 10px;
+  color: white;
+  background-color: #212529;
+  text-align: center;
+  display: none;
+}
+
+#user:hover{
+  color: rgba(255, 255, 255, 0.77);
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+#cerrar-sesion {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#cerrar-sesion:hover {
+  color: rgba(255, 255, 255, 0.77);
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+#carrito {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#carrito:hover {
+  color: rgba(255, 255, 255, 0.77);
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;  
+}

@@ -6,6 +6,9 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+let User = document.getElementById("user");
+let desplegable = document.getElementById("desplegable");
+
 function cerrarSesion() {
     localStorage.removeItem("Usuario");
     window.location.href = "login.html";
@@ -94,9 +97,22 @@ document.addEventListener("DOMContentLoaded", function(e){
         window.location.href = "login.html";
         }
 
-        document.getElementById("cerrar-session").addEventListener("click", () => {
-            cerrarSesion();
-        });
+    User.innerHTML = localStorage.getItem("Usuario");
+
+    User.addEventListener("click", () => {
+        if (desplegable.style.display = "none") {
+            desplegable.style.display = "block";
+            window.addEventListener("click", (e) => {
+                if (!desplegable.contains(e.target) && !User.contains(e.target)) {
+                    desplegable.style.display = "none";
+                };
+            });
+        };
+    });
+
+    document.getElementById("cerrar-sesion").addEventListener("click", () => {
+        cerrarSesion();
+    });
 
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){

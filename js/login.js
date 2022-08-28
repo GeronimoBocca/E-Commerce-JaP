@@ -3,7 +3,6 @@ let oculto2 = document.getElementById("oculto-password");
 let email = document.getElementById("email");
 let contraseña = document.getElementById("password");
 let boton = document.getElementById("login-enviar");
-let usuario = {email};
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
@@ -15,10 +14,7 @@ function onSignIn(googleUser) {
 
 function login() {
     if (email.value !== "" && contraseña.value !== ""){
-        localStorage.setItem("Usuario", JSON.stringify({
-            email: email.value,
-            password: contraseña.value,
-            }));
+        localStorage.setItem("Usuario", email.value);
         window.location.href = "index.html";
     }
     
