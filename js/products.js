@@ -1,11 +1,3 @@
-let User = document.getElementById("user");
-let desplegable = document.getElementById("desplegable");
-
-function cerrarSesion() {
-    localStorage.removeItem("Usuario");
-    window.location.href = "login.html";
-}
-
 let productsArray = [];
 
 function showProductsList(array){
@@ -36,30 +28,9 @@ function showProductsList(array){
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    if (localStorage.getItem("Usuario") === null) {
-        window.location.href = "login.html";
-        }
-
-    User.innerHTML = localStorage.getItem("Usuario");
-
-    User.addEventListener("click", () => {
-        if (desplegable.style.display = "none") {
-            desplegable.style.display = "block";
-            window.addEventListener("click", (e) => {
-                if (!desplegable.contains(e.target) && !User.contains(e.target)) {
-                    desplegable.style.display = "none";
-                };
-            });
-        };
-    });
-
-    document.getElementById("cerrar-sesion").addEventListener("click", () => {
-        cerrarSesion();
-    });
-
     let catID = localStorage.getItem("catID");
 
-    getJSONData(PRODUCTS_URL+ catID +EXT_TYPE).then(function(resultObj){
+    getJSONData(PRODUCTS_URL+ catID +".json").then(function(resultObj){
         if (resultObj.status === "ok")
         {
             productsArray = resultObj.data;

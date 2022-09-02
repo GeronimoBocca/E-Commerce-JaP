@@ -1,11 +1,3 @@
-let User = document.getElementById("user");
-let desplegable = document.getElementById("desplegable");
-
-function cerrarSesion() {
-    localStorage.removeItem("Usuario");
-    window.location.href = "login.html";
-}
-
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;
@@ -36,27 +28,6 @@ function updateTotalCosts(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-
-    if (localStorage.getItem("Usuario") === null) {
-        window.location.href = "login.html";
-        }
-
-    User.innerHTML = localStorage.getItem("Usuario");
-
-    User.addEventListener("click", () => {
-        if (desplegable.style.display = "none") {
-            desplegable.style.display = "block";
-            window.addEventListener("click", (e) => {
-                if (!desplegable.contains(e.target) && !User.contains(e.target)) {
-                    desplegable.style.display = "none";
-                };
-            });
-        };
-    });
-
-    document.getElementById("cerrar-sesion").addEventListener("click", () => {
-        cerrarSesion();
-    });
 
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
