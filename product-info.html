@@ -30,17 +30,42 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
+          <li class="nav-item" id="user"></li>
+          <ul id="desplegable">
+            <li><a id="carrito" href="cart.html">Mi Carrito</a></li>
+            <hr>
+            <li><a id="cerrar-sesion" href="#">Cerrar Sesión</a></li>
+          </ul>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <h1 id="producto-nombre"></h1>
+      <hr>
+      <h5 class="elemento-titulo">Precio</h5>
+      <p id="producto-precio" class="data"></p>
+      <h5 class="elemento-titulo">Descripción</h5>
+      <p id="producto-descripcion" class="data"></p>
+      <h5 class="elemento-titulo">Categoría</h5>
+      <p id="producto-categoria" class="data"></p>
+      <h5 class="elemento-titulo">Cantidad de vendidos</h5>
+      <p id="producto-vendido" class="data"></p>
+      <h5 class="elemento-titulo">Imágenes ilustrativas</h5>
+      <div id="producto-imagenes">
+        <img id="primeraImagen" class="primera">
+        <img id="segundaImagen" class="segunda">
+        <img id="terceraImagen" class="tercera">
+        <img id="cuartaImagen" class="cuarta">
       </div>
+      <br>
+      <br>
+      <h2>Comentarios</h2>
+      <div id="comentarios-prod"></div>
+      <!-- <div class="alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      </div> -->
     </div>
   </main>
   <footer class="text-muted">

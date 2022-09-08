@@ -6,6 +6,11 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location="product-info";
+}
+
 function sortProducts(criteria, array) {
     let result = [];
     if (criteria === ORDER_ASC_BY_COST) {
@@ -36,10 +41,13 @@ function sortProducts(criteria, array) {
 
 function sortAndShowProducts(sortCriteria, productsArray) {
     currentSortCriteria = sortCriteria;
+
     if (productsArray != undefined) {
         currentProductsArray = productsArray;
     }
+
     currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
+
     showProductsList();
 }
 
@@ -52,7 +60,7 @@ function showProductsList() {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
 
             htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                     <img src="${product.image}" alt="product image" class="img-thumbnail">
@@ -70,7 +78,7 @@ function showProductsList() {
         </div>
        `
         }
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
