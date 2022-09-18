@@ -41,32 +41,31 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <h1 id="producto-nombre"></h1>
-      <hr>
-      <h5 class="elemento-titulo">Precio</h5>
-      <p id="producto-precio" class="data"></p>
-      <h5 class="elemento-titulo">Descripción</h5>
-      <p id="producto-descripcion" class="data"></p>
-      <h5 class="elemento-titulo">Categoría</h5>
-      <p id="producto-categoria" class="data"></p>
-      <h5 class="elemento-titulo">Cantidad de vendidos</h5>
-      <p id="producto-vendido" class="data"></p>
-      <h5 class="elemento-titulo">Imágenes ilustrativas</h5>
-      <div id="producto-imagenes">
-        <img id="primeraImagen" class="primera">
-        <img id="segundaImagen" class="segunda">
-        <img id="terceraImagen" class="tercera">
-        <img id="cuartaImagen" class="cuarta">
-      </div>
-      <br>
-      <br>
-      <h2>Comentarios</h2>
-      <div id="comentarios-prod"></div>
+    <div id="contenedor-info" class="container"></div>
       <!-- <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div> -->
+    
+    <h2 id="titulo-comentarios">Comentarios</h2>
+    <hr class="linea">
+    <br>
+    <div id="comentarios-prod">
     </div>
+    
+    <h2 id="titulo-comentarios">Comentar</h2>
+    <hr class="linea">
+    <p class="parrafo-comentarios">Tu opinión:</p>
+    <textarea name="campo" id="textarea" cols="90" rows="4"></textarea>
+    <p class="parrafo-comentarios">Tu puntuación:</p>
+    <select id="cantidad">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select> 
+    <br>
+    <button class="btn btn-primary" id="enviar">Enviar</button>
   </main>
   <footer class="text-muted">
     <div class="container">
