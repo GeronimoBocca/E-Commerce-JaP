@@ -54,7 +54,6 @@ function crearComentarios() {
     let comentariosAMostrar = "";
     for (let i = 0; i < comentarios.length; i++) {
         let comentario = comentarios[i];
-        console.log(comentario)
         comentariosAMostrar += `
         <div class="comentarios-prod">
         <p class="fecha"><span class="user">${comentario.user}</span> - ${comentario.dateTime} - ` + mostrarEstrellas(comentario.score)+` </p>
