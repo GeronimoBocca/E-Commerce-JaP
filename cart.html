@@ -24,16 +24,18 @@
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a class="nav-link active" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item" id="user"></li>
-          <ul id="desplegable">
-            <li><a id="carrito" href="cart.html">Mi Carrito</a></li>
-            <hr>
-            <li><a id="cerrar-sesion" href="#">Cerrar Sesión</a></li>
+          <li class="nav-item"><button class="btn btn-dark dropdown-toggle" id="user"></button></li>
+          <!-- <li class="nav-item" id="user"></li> -->
+          <ul id="desplegable" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" id="carrito" href="cart.html">Mi Carrito</a></li>
+            <li><a class="dropdown-item" id="mi-perfil" href="my-profile.html">Mi Perfil</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" id="cerrar-sesion" href="#">Cerrar Sesión</a></li>
           </ul>
         </ul>
       </div>

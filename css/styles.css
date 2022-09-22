@@ -246,24 +246,31 @@ a.custom-card:hover {
 
 #user {
   color: rgba(255, 255, 255, 0.55);
-  margin-top: 8px;
+  margin-top: 0px;
 }
 
 #desplegable {
   list-style: none;
   position: absolute;
   margin-top: 2.8%;
-  margin-left: 77.5%;
-  padding: 10px;
+  margin-left: 74.8%;
   color: white;
   background-color: #212529;
-  text-align: center;
   display: none;
 }
 
 #user:hover{
   color: rgba(255, 255, 255, 0.77);
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+#mi-perfil {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#mi-perfil:hover {
+  color: rgba(255, 255, 255, 0.77);
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;  
 }
 
 #cerrar-sesion {
