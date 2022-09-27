@@ -31,7 +31,6 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item"><button class="btn btn-dark dropdown-toggle" id="user"></button></li>
-          <!-- <li class="nav-item" id="user"></li> -->
           <ul id="desplegable" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" id="carrito" href="cart.html">Mi Carrito</a></li>
             <li><a class="dropdown-item" id="mi-perfil" href="my-profile.html">Mi Perfil</a></li>
@@ -44,18 +43,13 @@
   </nav>
   <main>
     <div id="contenedor-info" class="container"></div>
-      <!-- <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div> -->
-    
-    <h2 id="titulo-comentarios">Comentarios</h2>
     <hr class="linea">
+    <h2 class="titulo-comentarios">Comentarios</h2>
     <br>
     <div id="comentarios-prod">
     </div>
-    
-    <h2 id="titulo-comentarios">Comentar</h2>
     <hr class="linea">
+    <h2 class="titulo-comentarios">Comentar</h2>
     <p class="parrafo-comentarios">Tu opinión:</p>
     <textarea name="campo" id="textarea" cols="90" rows="4"></textarea>
     <p class="parrafo-comentarios">Tu puntuación:</p>
@@ -65,9 +59,13 @@
       <option value="3">3</option>
       <option value="4">4</option>
       <option value="5">5</option>
-    </select> 
+    </select>
     <br>
     <button class="btn btn-primary" id="enviar">Enviar</button>
+    <hr class="linea">
+    <h2 class="titulo-comentarios">Productos Relacionados</h2>
+    <div id="contenedor-relacionados">
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">

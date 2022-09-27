@@ -1,3 +1,5 @@
+// Array y 
+
 const ORDER_ASC_BY_COST = "$AS";
 const ORDER_DESC_BY_COST = "$DE";
 const ORDER_BY_SOLD_COUNT = "Rel";
@@ -8,7 +10,7 @@ let maxCount = undefined;
 
 function setProdID(id) {
     localStorage.setItem("prodID", id);
-    window.location="product-info";
+    window.location = "product-info";
 }
 
 function sortProducts(criteria, array) {
@@ -53,6 +55,7 @@ function sortAndShowProducts(sortCriteria, productsArray) {
 
 function showProductsList() {
     let htmlContentToAppend = "";
+    
     for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];
 

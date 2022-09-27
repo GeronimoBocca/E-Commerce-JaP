@@ -245,8 +245,7 @@ a.custom-card:hover {
 }
 
 #user {
-  color: rgba(255, 255, 255, 0.55);
-  margin-top: 0px;
+  color: white;
 }
 
 #desplegable {
@@ -257,11 +256,6 @@ a.custom-card:hover {
   color: white;
   background-color: #212529;
   display: none;
-}
-
-#user:hover{
-  color: rgba(255, 255, 255, 0.77);
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
 #mi-perfil {
@@ -312,48 +306,19 @@ a.custom-card:hover {
   margin-bottom: 3%;
 }
 
-.primera {
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 3px;
-  padding: 8px;
-  width: 21%;
-  margin-left: 5%;
-  margin-right: 1%;
+#producto-imagenes {
+  margin-top: 2%;
+  margin-left: 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
 }
 
-.segunda {
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 3px;
-  padding: 8px;
-  width: 21%;
-  margin-right: 1%;
-}
-
-.tercera {
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 3px;
-  padding: 8px;
-  width: 21%;
-  margin-right: 1%;
-}
-
-.cuarta {
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 3px;
-  padding: 8px;
-  width: 21%;
-  margin-right: 2%;
-}
-
-.primera:hover,
-.segunda:hover,
-.tercera:hover,
-.cuarta:hover
- {
+.img-thumbnail:hover {
   background-color: #f7f7f7;
 }
 
-#titulo-comentarios {
+.titulo-comentarios {
   margin-left: 7%;
   font-weight: normal;
 }
@@ -383,6 +348,7 @@ a.custom-card:hover {
 }
 
 .parrafo-comentarios {
+  margin-top: 2%;
   font-size: 120%;
   margin-left: 11.7%;
 }
@@ -405,5 +371,16 @@ a.custom-card:hover {
 
 #enviar {
   margin-left: 11.7%;
-  margin-top: 1%;
+  margin-top: 2%;
+}
+
+#contenedor-relacionados {
+  margin-top: 2%;
+  margin-left: 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card:hover {
+  background-color: #f7f7f7;
 }
