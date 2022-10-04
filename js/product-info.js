@@ -10,6 +10,59 @@ function setProdID(id) {
     window.location = "product-info";
 }
 
+// Crear Imagenes
+
+function crearImagenes() {
+
+    let imagenes = "";
+    for (let i = 0; i < prodInfo.images.length; i++) {
+        let img = prodInfo.images[i];
+
+        imagenes += `
+        <img class="img-thumbnail" src=${img}>
+        `;
+    }
+    return imagenes
+}
+
+// Comentarios
+
+function crearComentarios() {
+
+    let comentariosAMostrar = "";
+    for (let i = 0; i < comentarios.length; i++) {
+        let comentario = comentarios[i];
+        comentariosAMostrar += `
+        <div class="comentarios-prod">
+        <p class="fecha"><span class="user">${comentario.user}</span> - ${comentario.dateTime} - ` + crearEstrellas(comentario.score) + ` </p>
+        <p class="descripcion">${comentario.description}</p>
+        </div>
+        `
+        document.getElementById("comentarios-prod").innerHTML = comentariosAMostrar;
+    };
+}
+
+// Productos Relacionados
+
+function crearRelacionados() {
+
+    let relacionadosAMostrar = "";
+    for (let i = 0; i < prodInfo.relatedProducts.length; i++) {
+        const relacionados = prodInfo.relatedProducts[i];
+        relacionadosAMostrar += `
+        <div onclick="setProdID(${relacionados.id})" class="card" style="width: 18rem;">
+        <img class="card-img-top"
+          src="${relacionados.image}"
+          alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">${relacionados.name}</h5>
+        </div>
+      </div>
+        `
+    }
+    document.getElementById("contenedor-relacionados").innerHTML = relacionadosAMostrar;
+}
+
 // Crear estrellas de comentarios
 
 function crearEstrellas(score) {
@@ -29,8 +82,6 @@ function crearEstrellas(score) {
 
 function crearInfo() {
 
-    // Información del producto
-
     let infoAMostrar = "";
     infoAMostrar += `
         <h1 id="producto-nombre">${prodInfo.name}</h1>
@@ -44,56 +95,11 @@ function crearInfo() {
         <h5 class="elemento-titulo">Cantidad de vendidos</h5>
         <p id="producto-vendido" class="data">${prodInfo.soldCount}</p>
         <h5 class="elemento-titulo">Imágenes ilustrativas</h5>
-        <div id="producto-imagenes">
-        </div>
+        <div id="producto-imagenes"></div>
     `
     document.getElementById("contenedor-info").innerHTML = infoAMostrar;
-
-    // Crear Imagenes
-
-    let imagenes = "";
-    for (let i = 0; i < prodInfo.images.length; i++) {
-        let img = prodInfo.images[i];
-
-        imagenes += `
-        <img class="img-thumbnail" src=${img}>
-        `;
-    }
-    document.getElementById("producto-imagenes").innerHTML = imagenes;
-
-    // Comentarios
-    
-        let comentariosAMostrar = "";
-        for (let i = 0; i < comentarios.length; i++) {
-            let comentario = comentarios[i];
-            comentariosAMostrar += `
-        <div class="comentarios-prod">
-        <p class="fecha"><span class="user">${comentario.user}</span> - ${comentario.dateTime} - ` + crearEstrellas(comentario.score) + ` </p>
-        <p class="descripcion">${comentario.description}</p>
-        </div>
-        `
-            document.getElementById("comentarios-prod").innerHTML = comentariosAMostrar;
-        };
-
-    // Productos Relacionados
-
-    let relacionadosAMostrar = "";
-    for (let i = 0; i < prodInfo.relatedProducts.length; i++) {
-        const relacionados = prodInfo.relatedProducts[i];
-        relacionadosAMostrar += `
-        <div onclick="setProdID(${relacionados.id})" class="card" style="width: 18rem;">
-        <img class="card-img-top"
-          src="${relacionados.image}"
-          alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">${relacionados.name}</h5>
-        </div>
-      </div>
-        `
-    }
-    document.getElementById("contenedor-relacionados").innerHTML = relacionadosAMostrar;
-};
-
+    document.getElementById("producto-imagenes").innerHTML = crearImagenes()
+}
 // Cuando el evento DOM carga:
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -108,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (resultObj.status === "ok") {
             prodInfo = resultObj.data;
             crearInfo();
+            crearRelacionados()
         }
     });
 
@@ -116,8 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getJSONData(PRODUCT_INFO_COMMENTS_URL + prodID + EXT_TYPE).then(function (resultObj) {
         if (resultObj.status === "ok") {
             comentarios = resultObj.data;
-            crearInfo();
+            crearComentarios();
         }
     });
-});
-
+})

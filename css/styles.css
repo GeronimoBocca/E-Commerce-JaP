@@ -235,10 +235,6 @@ a.custom-card:hover {
   margin-top: 15px;
 }
 
-.g-signin2 {
-  margin-left: 46%;
-}
-
 .encabezado {
   font-family: 'Raleway', serif !important;
   text-align: center;
@@ -383,4 +379,10 @@ a.custom-card:hover {
 
 .card:hover {
   background-color: #f7f7f7;
+}
+
+.input-search {
+  float: left;
+  width: 250px;
+  height: 38px;
 }

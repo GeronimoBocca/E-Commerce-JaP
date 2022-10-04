@@ -1,4 +1,4 @@
-// Array y 
+// Array y lets
 
 const ORDER_ASC_BY_COST = "$AS";
 const ORDER_DESC_BY_COST = "$DE";
@@ -7,26 +7,40 @@ let currentProductsArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
+let inputSearch = document.getElementById("inputSearch").value;
+
+// Setear ID de producto
 
 function setProdID(id) {
     localStorage.setItem("prodID", id);
     window.location = "product-info";
 }
 
+// Ordenar Productos
+
 function sortProducts(criteria, array) {
     let result = [];
+
+    // Ordenar por orden Ascendente en precio
+
     if (criteria === ORDER_ASC_BY_COST) {
         result = array.sort(function (a, b) {
             if (a.cost < b.cost) { return -1; }
             if (a.cost > b.cost) { return 1; }
             return 0;
         });
+
+    // Ordenar por orden Descendente en precio
+
     } else if (criteria === ORDER_DESC_BY_COST) {
         result = array.sort(function (a, b) {
             if (a.cost > b.cost) { return -1; }
             if (a.cost < b.cost) { return 1; }
             return 0;
         });
+
+    // Ordenar por cantidad de vendidos
+
     } else if (criteria === ORDER_BY_SOLD_COUNT) {
         result = array.sort(function (a, b) {
             let aCount = parseInt(a.soldCount);
@@ -37,9 +51,10 @@ function sortProducts(criteria, array) {
             return 0;
         });
     }
-
     return result;
 }
+
+// Ordeno y muestro los productos ordenados
 
 function sortAndShowProducts(sortCriteria, productsArray) {
     currentSortCriteria = sortCriteria;
@@ -49,13 +64,14 @@ function sortAndShowProducts(sortCriteria, productsArray) {
     }
 
     currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
-
     showProductsList();
 }
 
+// Mostrar lista de productos
+
 function showProductsList() {
     let htmlContentToAppend = "";
-    
+
     for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];
 
@@ -85,9 +101,15 @@ function showProductsList() {
     }
 }
 
+// Cuando el evento DOM carga: 
+
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Agarro la ID de Categoria
+
     let catID = localStorage.getItem("catID");
+
+    // Llamo al JSON de Productos
 
     getJSONData(PRODUCTS_URL + catID + ".json").then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -97,17 +119,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Al hacer click se llama al a funcion de orden ascendente al precio
+
     document.getElementById("sortAsc").addEventListener("click", function () {
         sortAndShowProducts(ORDER_ASC_BY_COST);
     });
+
+    // Al hacer click se llama al a funcion de orden descendente al precio
 
     document.getElementById("sortDesc").addEventListener("click", function () {
         sortAndShowProducts(ORDER_DESC_BY_COST);
     });
 
+    // Al hacer click se llama al a funcion de orden por productos vendidos
+
     document.getElementById("sortByCount").addEventListener("click", function () {
         sortAndShowProducts(ORDER_BY_SOLD_COUNT);
     });
+
+    // Al hacer click se se borra el rango de precios
 
     document.getElementById("clearRangeFilter").addEventListener("click", function () {
         document.getElementById("rangeFilterCountMin").value = "";
@@ -118,6 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         showProductsList();
     });
+
+    // Al hacer click se filtra por rango de precios
 
     document.getElementById("rangeFilterCount").addEventListener("click", function () {
         minCount = document.getElementById("rangeFilterCountMin").value;
@@ -138,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
         else {
             maxCount = undefined;
         }
-
         showProductsList();
     });
 });
