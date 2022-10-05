@@ -10,7 +10,7 @@ function setProdID(id) {
     window.location = "product-info";
 }
 
-// Crear Imagenes
+// Imagenes
 
 function crearImagenes() {
 
@@ -63,7 +63,7 @@ function crearRelacionados() {
     document.getElementById("contenedor-relacionados").innerHTML = relacionadosAMostrar;
 }
 
-// Crear estrellas de comentarios
+// Estrellas de comentarios
 
 function crearEstrellas(score) {
     let estrella = "";
@@ -95,10 +95,9 @@ function crearInfo() {
         <h5 class="elemento-titulo">Cantidad de vendidos</h5>
         <p id="producto-vendido" class="data">${prodInfo.soldCount}</p>
         <h5 class="elemento-titulo">Imágenes ilustrativas</h5>
-        <div id="producto-imagenes"></div>
+        <div id="producto-imagenes">`+ crearImagenes() +`</div>
     `
     document.getElementById("contenedor-info").innerHTML = infoAMostrar;
-    document.getElementById("producto-imagenes").innerHTML = crearImagenes()
 }
 // Cuando el evento DOM carga:
 
@@ -108,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let prodID = localStorage.getItem("prodID");
 
-    // Llamo al JSON del producto, usando la ID que agarré recien. Llamo a la funcion crearInfo()
+    // Llamo al JSON del producto, usando la ID que agarré recien. Llamo a la funcion crearInfo() y llamo a crearRelacionados()
 
     getJSONData(PRODUCT_INFO_URL + prodID + EXT_TYPE).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -118,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Llamo al JSON de los comentarios, usando la ID que agarré recien. Llamo a la funcion crearInfo()
+    // Llamo al JSON de los comentarios, usando la ID que agarré recien. Llamo a la funcion crearComentarios()
 
     getJSONData(PRODUCT_INFO_COMMENTS_URL + prodID + EXT_TYPE).then(function (resultObj) {
         if (resultObj.status === "ok") {
