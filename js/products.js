@@ -1,4 +1,4 @@
-// Array y lets
+// Array de información
 
 let listaProductos = [];
 
@@ -9,16 +9,15 @@ function setProdID(id) {
     window.location = "product-info";
 }
 
-// Ordenar Productos
+// Realiza una busqueda por nombre o descripcion
 
-    // Ordenar por orden Ascendente en precio
-
-
-    // Ordenar por orden Descendente en precio
-
-    // Ordenar por cantidad de vendidos
-
-// Ordeno y muestro los productos ordenados
+function buscar() {
+    let valorBusqueda = document.getElementById("inputBuscar").value
+    let filtrado = listaProductos.products.filter((a) => {
+        return a.name.toLowerCase().indexOf(valorBusqueda.toLowerCase()) > -1 || a.description.toLowerCase().indexOf(valorBusqueda.toLowerCase()) > -1
+    })
+    showProductsList(filtrado);
+}
 
 // Mostrar lista de productos
 
@@ -46,9 +45,9 @@ function showProductsList(array) {
             </div>
         </div>
        `
-        }
-        document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
+    document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
+}
 
 // Cuando el evento DOM carga: 
 
@@ -68,7 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Al hacer click se llama al a funcion de orden ascendente al precio
+    // Cuando el input cambia, se llama a la funcion buscar()
+
+    document.getElementById("inputBuscar").addEventListener("change", () => {
+        buscar()
+    })
+
+    // Al hacer click en el boton, se ordenan los productos por cantidad de vendidos
 
     document.getElementById("sortByCount").addEventListener("click", () => {
         listaProductos.products.sort((a, b) => {
@@ -83,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showProductsList(listaProductos.products);
     })
 
-    // Al hacer click se llama al a funcion de orden descendente al precio
+    // Al hacer click en el boton, se ordenan los productos por precio descendente
 
     document.getElementById("sortDesc").addEventListener("click", () => {
         listaProductos.products.sort((a, b) => {
@@ -98,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showProductsList(listaProductos.products);
     })
 
-    // Al hacer click se llama al a funcion de orden por productos vendidos
+    // Al hacer click en el boton, se ordenan los productos por precio ascendente
 
     document.getElementById("sortAsc").addEventListener("click", () => {
         listaProductos.products.sort((a, b) => {
@@ -112,6 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         showProductsList(listaProductos.products);
     })
+
+    // Al hacer click en el boton, se toman los valores minimos y maximos y se filtra los productos por precio
 
     document.getElementById("rangeFilterCount").addEventListener("click", () => {
         let min = document.getElementById("rangeFilterCountMin").value;
@@ -135,6 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
         resultado.sort((a, b) => a.cost - b.cost);
         showProductsList(resultado);
     })
+
+    // Al hacer click en el boton, se limpian los filtros por precio, dejandolos en su estado original
 
     document.getElementById("clearRangeFilter").addEventListener("click", () => {
         document.getElementById("rangeFilterCountMin").value = null;

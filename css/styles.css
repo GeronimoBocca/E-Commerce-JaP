@@ -381,7 +381,7 @@ a.custom-card:hover {
   background-color: #f7f7f7;
 }
 
-.input-search {
+#inputBuscar {
   float: left;
   width: 250px;
   height: 38px;
