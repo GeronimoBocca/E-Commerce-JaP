@@ -10,6 +10,19 @@ function setProdID(id) {
     window.location = "product-info";
 }
 
+function agregar() {
+    let textarea = document.getElementById("textarea");
+    if (textarea.value !== "") {
+    comentarios.push(textarea.value);
+    localStorage.setItem("lista", JSON.stringify(comentarios));
+    textarea.value = "";
+    crearComentarios();
+    }
+    else {
+        textarea.classList.add("is-invalid");
+    }
+};
+
 // Imagenes
 
 function crearImagenes() {
@@ -48,7 +61,7 @@ function crearRelacionados() {
 
     let relacionadosAMostrar = "";
     for (let i = 0; i < prodInfo.relatedProducts.length; i++) {
-        const relacionados = prodInfo.relatedProducts[i];
+        let relacionados = prodInfo.relatedProducts[i];
         relacionadosAMostrar += `
         <div onclick="setProdID(${relacionados.id})" class="card" style="width: 18rem;">
         <img class="card-img-top"
@@ -125,4 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
             crearComentarios();
         }
     });
+
+    document.getElementById("enviar").addEventListener("click", () => {
+        agregar()
+    })
 })

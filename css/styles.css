@@ -381,8 +381,51 @@ a.custom-card:hover {
   background-color: #f7f7f7;
 }
 
+#producto-imagenes {
+  margin-left: 0;
+}
+
 #inputBuscar {
   float: left;
   width: 250px;
   height: 38px;
+}
+
+.articulosComprar {
+  margin-left: 24%;
+  font-size: xx-large;
+}
+
+#inputArticulo {
+  width: 60px;
+}
+
+.table {
+  width: 800px;
+  margin-left: 24%;
+}
+
+.lineaCorta {
+  margin-left: 24%;
+  margin-right: 23.4%;
+}
+
+.inputsRadioEnvio {
+  margin-left: 24%;
+}
+
+.inputsTextEnvio {
+  margin-left: 24%;
+}
+
+.inputTextoLargo {
+  width: 350px;
+}
+
+.diferente {
+  margin-left: 6.5%;
+}
+
+.normales {
+  margin-left: 1%;
 }
