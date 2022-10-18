@@ -10,17 +10,33 @@ function setProdID(id) {
     window.location = "product-info";
 }
 
+function crearHora() {
+    let hoy = new Date();
+
+    let dia = hoy.getDate();
+    let mes = hoy.getMonth() + 1;
+    let anio = hoy.getFullYear();
+    let hora = hoy.getHours()
+    let minutos = hoy.getMinutes()
+    let segundos = hoy.getSeconds()
+
+    document.getElementById("comFecha").innerHTML = anio + "-" + mes + "-" + dia + " " + hora + ":" + minutos + ":" + segundos;
+  }
+  
+
 function agregar() {
-    let textarea = document.getElementById("textarea");
-    if (textarea.value !== "") {
-    comentarios.push(textarea.value);
-    localStorage.setItem("lista", JSON.stringify(comentarios));
-    textarea.value = "";
-    crearComentarios();
-    }
-    else {
-        textarea.classList.add("is-invalid");
-    }
+    let comentarioNuevo = []
+    comentarioNuevo.score = document.getElementById("cantidad").value
+    console.log(comentarioNuevo.score)
+    comentarioNuevo.user = localStorage.getItem("Usuario")
+    console.log(comentarioNuevo.user)
+    comentarioNuevo.description = document.getElementById("textarea").value
+    console.log(comentarioNuevo.description)
+    crearHora()
+    comentarioNuevo.dateTime = document.getElementById("comFecha").innerHTML
+    console.log(comentarioNuevo.dateTime)
+    comentarios.push(comentarioNuevo)
+    crearComentarios()
 };
 
 // Imagenes
@@ -47,8 +63,8 @@ function crearComentarios() {
         let comentario = comentarios[i];
         comentariosAMostrar += `
         <div class="comentarios-prod">
-        <p class="fecha"><span class="user">${comentario.user}</span> - ${comentario.dateTime} - ` + crearEstrellas(comentario.score) + ` </p>
-        <p class="descripcion">${comentario.description}</p>
+        <p class="fecha"><span id="comUser" class="comUser">${comentario.user}</span> - <span id="comFecha">${comentario.dateTime}</span> - <span id="comEstrella">` + crearEstrellas(comentario.score) + `</span> </p>
+        <p id="comDescripcion" class="descripcion">${comentario.description}</p>
         </div>
         `
         document.getElementById("comentarios-prod").innerHTML = comentariosAMostrar;
