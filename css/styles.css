@@ -346,7 +346,6 @@ a.custom-card:hover {
 .parrafo-comentarios {
   margin-top: 2%;
   font-size: 120%;
-  margin-left: 11.7%;
 }
 
 .linea {
@@ -356,18 +355,14 @@ a.custom-card:hover {
 
 #textarea {
   margin-left: 11.7%;
-  border-radius: 5px;
 }
 
 #cantidad {
   margin-left: 11.7%;
-  border-radius: 5px;
-  width: 12%;
 }
 
 #enviar {
   margin-left: 11.7%;
-  margin-top: 2%;
 }
 
 #contenedor-relacionados {
@@ -392,7 +387,6 @@ a.custom-card:hover {
 }
 
 .articulosComprar {
-  margin-left: 24%;
   font-size: xx-large;
 }
 
@@ -400,32 +394,20 @@ a.custom-card:hover {
   width: 60px;
 }
 
-.table {
-  width: 800px;
-  margin-left: 24%;
+#modalOpcion {
+  float: left;
+  padding-right: 10px;
 }
 
-.lineaCorta {
-  margin-left: 24%;
-  margin-right: 23.4%;
+#enviarCompra {
+  margin-top: 5%;
 }
 
-.inputsRadioEnvio {
-  margin-left: 24%;
+#feedback {
+  display: none;
+  color: red;
 }
 
-.inputsTextEnvio {
-  margin-left: 24%;
-}
-
-.inputTextoLargo {
-  width: 350px;
-}
-
-.diferente {
-  margin-left: 6.5%;
-}
-
-.normales {
-  margin-left: 1%;
+.conMargen {
+  margin-left: 11.7%;
 }

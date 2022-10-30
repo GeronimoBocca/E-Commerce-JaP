@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
         login();
     });
 
-    email.addEventListener('keydown', () => {
+    email.addEventListener('focus', () => {
         email.classList.remove("is-invalid");
         oculto1.style.display = "none";
     });
 
-    contraseña.addEventListener('keydown', () => {
+    contraseña.addEventListener('focus', () => {
         contraseña.classList.remove("is-invalid");
         oculto2.style.display = "none";
     });

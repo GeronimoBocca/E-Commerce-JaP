@@ -20,23 +20,33 @@ function crearHora() {
     let minutos = hoy.getMinutes()
     let segundos = hoy.getSeconds()
 
+    if (hora < 10) {
+        return hora = "0" + hora
+    }
+
+    if (minutos < 10) {
+        return minutos = "0" + minutos
+    }
+
+    if (segundos < 10) {
+        return segundos = "0" + segundos
+    }
+
     document.getElementById("comFecha").innerHTML = anio + "-" + mes + "-" + dia + " " + hora + ":" + minutos + ":" + segundos;
-  }
-  
+}
+
 
 function agregar() {
-    let comentarioNuevo = []
-    comentarioNuevo.score = document.getElementById("cantidad").value
-    console.log(comentarioNuevo.score)
-    comentarioNuevo.user = localStorage.getItem("Usuario")
-    console.log(comentarioNuevo.user)
+    let comentarioNuevo = {}
+    comentarioNuevo.product = JSON.parse(localStorage.getItem("prodID"))
+    comentarioNuevo.score = JSON.parse(document.getElementById("cantidad").value)
     comentarioNuevo.description = document.getElementById("textarea").value
-    console.log(comentarioNuevo.description)
+    comentarioNuevo.user = localStorage.getItem("Usuario")
     crearHora()
     comentarioNuevo.dateTime = document.getElementById("comFecha").innerHTML
-    console.log(comentarioNuevo.dateTime)
     comentarios.push(comentarioNuevo)
     crearComentarios()
+    localStorage.setItem("comentarios", JSON.stringify(comentarios))
 };
 
 // Imagenes
@@ -48,8 +58,10 @@ function crearImagenes() {
         let img = prodInfo.images[i];
 
         imagenes += `
-        <img class="img-thumbnail" src=${img}>
-        `;
+        <div class="carousel-item">
+            <img src="${img}" class="d-block w-75 m-auto">
+        </div>
+        `
     }
     return imagenes
 }
@@ -57,7 +69,6 @@ function crearImagenes() {
 // Comentarios
 
 function crearComentarios() {
-
     let comentariosAMostrar = "";
     for (let i = 0; i < comentarios.length; i++) {
         let comentario = comentarios[i];
@@ -124,13 +135,26 @@ function crearInfo() {
         <h5 class="elemento-titulo">Cantidad de vendidos</h5>
         <p id="producto-vendido" class="data">${prodInfo.soldCount}</p>
         <h5 class="elemento-titulo">Imágenes ilustrativas</h5>
-        <div id="producto-imagenes">`+ crearImagenes() +`</div>
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div id="carousel" class="carousel-inner">`+ crearImagenes() +`
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     `
     document.getElementById("contenedor-info").innerHTML = infoAMostrar;
 }
 // Cuando el evento DOM carga:
 
 document.addEventListener("DOMContentLoaded", () => {
+
+
 
     // Agarro el ID del producto
 
@@ -143,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
             prodInfo = resultObj.data;
             crearInfo();
             crearRelacionados()
+            document.getElementById("carousel").children[0].classList.add('active')
         }
     });
 
@@ -156,6 +181,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("enviar").addEventListener("click", () => {
-        agregar()
+
+        if (document.getElementById("textarea").value !== "" && document.getElementById("cantidad").value !== "") {
+            agregar()
+            document.getElementById("textarea").value = ""
+            document.getElementById("cantidad").value = 1
+        }
+        
+        else if (document.getElementById("textarea").value == "") {
+            document.getElementById("textarea").classList.add("is-invalid")
+
+        }
+    })
+
+    document.getElementById("textarea").addEventListener("focus", () => {
+        document.getElementById("textarea").classList.remove("is-invalid")
+
     })
 })

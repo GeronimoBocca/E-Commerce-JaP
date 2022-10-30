@@ -50,15 +50,18 @@
     </div>
     <hr class="linea">
     <h2 class="titulo-comentarios">Comentar</h2>
-    <p class="parrafo-comentarios">Tu opinión:</p>
-    <textarea name="campo" id="textarea" cols="90" rows="4"></textarea>
-    <p class="parrafo-comentarios">Tu puntuación:</p>
-    <select id="cantidad">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+    <p class="parrafo-comentarios conMargen">Tu opinión:</p>
+    <textarea class="form-control w-50" id="textarea" rows="4"></textarea>
+    <div class="invalid-feedback conMargen">
+      Ingresa un comentario
+    </div>
+    <p class="parrafo-comentarios conMargen">Tu puntuación:</p>
+    <select class="form-select w-25" aria-label="Default select example" id="cantidad">
+      <option value="1">1 estrella</option>
+      <option value="2">2 estrellas</option>
+      <option value="3">3 estrellas</option>
+      <option value="4">4 estrellas</option>
+      <option value="5">5 estrellas</option>
     </select>
     <br>
     <button class="btn btn-primary" id="enviar">Enviar</button>

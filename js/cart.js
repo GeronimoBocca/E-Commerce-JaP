@@ -1,5 +1,12 @@
 let listaCarrito = []
 
+let calle = document.getElementById("calle")
+let numero = document.getElementById("numero")
+let esquina = document.getElementById("esquina")
+let boton1 = document.getElementById("boton1")
+let boton2 = document.getElementById("boton2")
+let texto = document.getElementById("feedback")
+
 function crearCarrito(array) {
 	let carritoAMostrar = ""
 
@@ -21,8 +28,19 @@ function crearCarrito(array) {
 }
 
 function cambiar() {
-	let	precio = parseInt(listaCarrito.articles[0].unitCost) * parseInt(document.getElementById("inputArticulo").value)
-	let envio = precio * 0.05
+	let precio = parseInt(listaCarrito.articles[0].unitCost) * parseInt(document.getElementById("inputArticulo").value)
+	let envio = 0
+
+	if (document.getElementById("opcionStandard").checked) {
+		envio = precio * 0.05
+	}
+	else if (document.getElementById("opcionExpress").checked) {
+		envio = precio * 0.07
+	}
+	else {
+		envio = precio * 0.15
+	}
+
 	let total = precio + envio
 	document.getElementById("subtotal").innerHTML = precio
 	document.getElementById("subtotal-lista").innerHTML = "USD " + precio
@@ -55,11 +73,73 @@ function crearListaSubTotal() {
 	  <span><strong id="total-lista">USD ${listaCarrito.articles[0].unitCost + listaCarrito.articles[0].unitCost * 0.05}</strong></span>
 	</li>
   </ul>
+  <hr>
 	`
 	document.getElementById("listaSubTotal").innerHTML += crearLista
 }
 
+function showAlertSuccess() {
+	document.getElementById("alert-success").classList.add("show");
+}
+
+function enviar() {
+
+	if (calle.value == "") {
+		calle.classList.add('is-invalid');
+	}
+	if (numero.value == "") {
+		numero.classList.add('is-invalid')
+	}
+	if (esquina.value == "") {
+		esquina.classList.add('is-invalid')
+	}
+	if (!boton1.checked && !boton2.checked) {
+		texto.style.display = "block"
+	}
+	if (calle.value !== "" && numero.value !== "" && esquina.value !== "" && boton1.checked) {
+		showAlertSuccess()
+	}
+	if (calle.value !== "" && numero.value !== "" && esquina.value !== "" && boton2.checked) {
+		showAlertSuccess()
+	}
+
+	document.getElementById("calle").addEventListener("change", () => {
+		calle.classList.remove("is-invalid")
+	})
+
+	document.getElementById("numero").addEventListener("change", () => {
+		numero.classList.remove("is-invalid")
+	})
+
+	document.getElementById("esquina").addEventListener("change", () => {
+		esquina.classList.remove("is-invalid")
+	})
+}
+
+function cambiarPago() {
+	if (boton1.checked) {
+		document.getElementById("numTarjeta").removeAttribute("disabled", "")
+		document.getElementById("codSeguridad").removeAttribute("disabled", "")
+		document.getElementById("vencimiento").removeAttribute("disabled", "")
+		document.getElementById("numCuenta").setAttribute("disabled", "")
+		document.getElementById("modalOpcion").innerHTML = boton1.value
+		texto.style.display = "none"
+	}
+	else if (boton2.checked) {
+		document.getElementById("numTarjeta").setAttribute("disabled", "")
+		document.getElementById("codSeguridad").setAttribute("disabled", "")
+		document.getElementById("vencimiento").setAttribute("disabled", "")
+		document.getElementById("numCuenta").removeAttribute("disabled", "")
+		document.getElementById("modalOpcion").innerHTML = boton2.value
+		texto.style.display = "none"
+	}
+	else {
+		document.getElementById("modalOpcion").innerHTML = "No ha seleccionado"
+	}
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+
 
 	let usuario = "25801"
 
@@ -68,12 +148,42 @@ document.addEventListener("DOMContentLoaded", () => {
 			listaCarrito = resultObj.data;
 			crearCarrito(listaCarrito.articles)
 			crearListaSubTotal()
-			
+
 			document.getElementById("inputArticulo").addEventListener("change", () => {
+				cambiar()
+			})
+
+			document.getElementById("opcionStandard").addEventListener("change", () => {
+				cambiar()
+			})
+			document.getElementById("opcionExpress").addEventListener("change", () => {
+				cambiar()
+			})
+			document.getElementById("opcionPremium").addEventListener("change", () => {
 				cambiar()
 			})
 		}
 	})
 
+	boton1.addEventListener("change", () => {
+		cambiarPago()
+	})
 
+	boton2.addEventListener("change", () => {
+		cambiarPago()
+	})
+
+
+	document.getElementById("enviarCompra").addEventListener("click", (e) => {
+		if(calle.value == "" || numero.value == "" || esquina.value == "" || !boton1.checked){
+			e.preventDefault()
+			e.stopPropagation()
+		}
+		if(calle.value == "" || numero.value == "" || esquina.value == "" || !boton2.checked){
+			e.preventDefault()
+			e.stopPropagation()
+		}
+
+		enviar()
+	})
 });
