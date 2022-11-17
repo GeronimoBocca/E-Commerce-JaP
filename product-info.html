@@ -30,13 +30,17 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item"><button class="btn btn-dark dropdown-toggle" id="user"></button></li>
-          <ul id="desplegable" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" id="carrito" href="cart.html">Mi Carrito</a></li>
-            <li><a class="dropdown-item" id="mi-perfil" href="my-profile.html">Mi Perfil</a></li>
-            <hr class="dropdown-divider">
-            <li><a class="dropdown-item" id="cerrar-sesion" href="#">Cerrar Sesión</a></li>
-          </ul>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-dark dropdown-toggle" type="button" id="user" data-bs-toggle="dropdown" aria-expanded="false"></button>
+              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="user">
+                <li><a class="dropdown-item" id="carrito" href="cart.html">Mi Carrito</a></li>
+                <li><a class="dropdown-item" id="miPerfil" href="my-profile.html">Mi Perfil</a></li>
+                <hr class="dropdown-divider">
+                <li><a class="dropdown-item" id="cerrarSesion" href="#">Cerrar Sesión</a></li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>

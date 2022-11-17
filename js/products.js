@@ -1,6 +1,8 @@
 // Array de información
 
 let listaProductos = [];
+let min = document.getElementById("rangeFilterCountMin").value;
+let max = document.getElementById("rangeFilterCountMax").value;
 
 // Setear ID de producto
 
@@ -121,8 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Al hacer click en el boton, se toman los valores minimos y maximos y se filtra los productos por precio
 
     document.getElementById("rangeFilterCount").addEventListener("click", () => {
-        let min = document.getElementById("rangeFilterCountMin").value;
-        let max = document.getElementById("rangeFilterCountMax").value;
+
 
         if (min == "" && max == "") {
             min = "0";

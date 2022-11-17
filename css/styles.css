@@ -48,6 +48,48 @@ nav a {
   }
 }
 
+@media (max-width: 1433px) {
+  .jumbotron {
+    height: 45vh;
+  }
+}
+
+@media (max-width: 1289px) {
+  .jumbotron {
+    height: 42vh;
+  }
+}
+
+@media (max-width: 1150px) {
+  .jumbotron {
+    height: 38vh;
+  }
+}
+
+@media (max-width: 1011px) {
+  .jumbotron {
+    height: 30vh;
+  }
+}
+
+@media (max-width: 835px) {
+  .jumbotron {
+    height: 25vh;
+  }
+}
+
+@media (max-width: 716px) {
+  .jumbotron {
+    height: 25vh;
+  }
+}
+
+@media (max-width: 581px) {
+  .jumbotron {
+    height: 20vh;
+  }
+}
+
 .jumbotron p:last-child {
   margin-bottom: 0;
 }
@@ -157,13 +199,6 @@ footer p {
   }
 }
 
-.signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-
 #spinner-wrapper {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
@@ -185,6 +220,18 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
+/* Código de Login */
+
+#imagenLogin {
+  max-width: 400px;
+}
+
+.form-login {
+  max-width: 300px;
+}
+
+/* Código de index */
+
 .checked {
   color: orange;
 }
@@ -204,31 +251,6 @@ a.custom-card:hover {
   font-weight: 300;
 }
 
-.imagen-login {
-  width: 400px;
-  margin-top: 1%;
-  margin-left: 37%;
-  padding-bottom: 0.5%;
-}
-
-#titulo-login {
-  text-align: center;
-}
-
-#datitos {
-  text-align: center;
-  color: #212529;;
-}
-
-#oculto-email, #oculto-password {
-  display: none;
-  color: red;
-}
-
-#email {
-  margin-bottom: 5px;
-}
-
 .centrado {
   text-align: center;
   color: #212529;;
@@ -240,34 +262,20 @@ a.custom-card:hover {
   text-align: center;
 }
 
-#user {
-  color: white;
-}
-
-#desplegable {
-  list-style: none;
-  position: absolute;
-  margin-top: 2.8%;
-  margin-left: 74%;
-  color: white;
-  background-color: #212529;
-  display: none;
-}
-
-#mi-perfil {
+#miPerfil {
   color: rgba(255, 255, 255, 0.55);
 }
 
-#mi-perfil:hover {
+#miPerfil:hover {
   color: rgba(255, 255, 255, 0.77);
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;  
 }
 
-#cerrar-sesion {
+#cerrarSesion {
   color: rgba(255, 255, 255, 0.55);
 }
 
-#cerrar-sesion:hover {
+#cerrarSesion:hover {
   color: rgba(255, 255, 255, 0.77);
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }

@@ -7,6 +7,8 @@ let boton1 = document.getElementById("boton1")
 let boton2 = document.getElementById("boton2")
 let texto = document.getElementById("feedback")
 
+// funcion para crear el carrito, toma un array como parametro
+
 function crearCarrito(array) {
 	let carritoAMostrar = ""
 
@@ -26,6 +28,8 @@ function crearCarrito(array) {
 		document.getElementById("tbody").innerHTML = carritoAMostrar
 	}
 }
+
+// funcion que 
 
 function cambiar() {
 	let precio = parseInt(listaCarrito.articles[0].unitCost) * parseInt(document.getElementById("inputArticulo").value)

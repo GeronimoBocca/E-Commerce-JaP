@@ -1,38 +1,52 @@
-let oculto1 = document.getElementById("oculto-email");
-let oculto2 = document.getElementById("oculto-password");
-let email = document.getElementById("email");
-let contraseña = document.getElementById("password");
-let boton = document.getElementById("login-enviar");
+let email = document.getElementById("emailLogin");
+let password = document.getElementById("passLogin");
+let submit = document.getElementById("submitLogin");
 
-function login() {
-    if (email.value !== "" && contraseña.value !== ""){
-        localStorage.setItem("Usuario", email.value);
-        window.location.href = "index.html";
-    }
-    
-    else if (email.value === "") {
-        oculto1.style.display = "block";
-        email.classList.add("is-invalid");
-    }
+// decodificar token de google
 
-    if (contraseña.value === "") {
-        oculto2.style.display = "block";
-        contraseña.classList.add("is-invalid");
-    }
+const parseJwt = (token) => {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+  
+    return JSON.parse(jsonPayload);
+  }
+
+// inicio de sesion con google
+
+function handleCredentialResponse(response) {
+   localStorage.setItem("Usuario", parseJwt(response.credential).email)
+   window.location.href = "index.html"
+}
+window.onload = function () {
+  google.accounts.id.initialize({
+    client_id: "506815704740-ormpnhvqk8u1gii58852v5tefvnqbptp.apps.googleusercontent.com",
+    callback: handleCredentialResponse
+  });
+  google.accounts.id.renderButton(
+    document.getElementById("buttonDiv"),
+    { theme: "outline", size: "large" }
+  );
+  google.accounts.id.prompt();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    boton.addEventListener("click", () => {
-        login();
-    });
+// Validar campos de inicio de sesion sin google
 
-    email.addEventListener('focus', () => {
-        email.classList.remove("is-invalid");
-        oculto1.style.display = "none";
-    });
+let forms = document.querySelectorAll(".needs-validation");
 
-    contraseña.addEventListener('focus', () => {
-        contraseña.classList.remove("is-invalid");
-        oculto2.style.display = "none";
-    });
+Array.prototype.slice.call(forms).forEach(function (form) {
+  form.addEventListener("submit", function (event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (form.checkValidity()) {
+      event.preventDefault();
+      localStorage.setItem("Usuario", email.value)
+      window.location.href = "index.html"
+    }
+    form.classList.add('was-validated')
+  }, false);
 });

@@ -17,33 +17,33 @@
 </head>
 
 <body>
+
   <main class="mt-5">
-    <img class="imagen-login" src="./img/login.png" alt="e-Mercado">
-    <h2 id="titulo-login">Inicio de sesión</h2>
-    <div id="datitos">
-      <label for="email">
-        Email
-        <br>
-        <input class="form-control" type="email" name="correo" id="email" placeholder="Email">
-      </label>
-      <br>
-      <p id="oculto-email">Ingrese su Email</p>
-      <label id="contraseña" for="contraseña">
-        Contraseña
-        <br>
-        <input class="form-control" type="password" name="contraseña" id="password" placeholder="Contraseña">
-      </label>
-      <br>
-      <p id="oculto-password">Ingrese su Contraseña</p>
-      <br>
-      <button id="login-enviar" class="btn btn-primary">Ingresar</button>
+    <div class="container d-flex flex-column align-items-center text-center m-auto">
+      <img class="w-100" src="./img/login.png" alt="e-Mercado" id="imagenLogin">
+      <h1 class="fw-bold">Inicio de sesión</h1>
+      <form class="needs-validation w-75 mt-3 form-login" novalidate>
+        <div class="form-group my-2">
+          <label for="email">E-mail</label>
+          <input class="form-control" type="email" name="correo" id="emailLogin" placeholder="E-mail" required>
+          <div class="invalid-feedback">
+            Ingrese un E-Mail valido
+          </div>
+        </div>
+        <div class="form-group my-2">
+          <label id="contraseña" for="contraseña">Contraseña</label>
+          <input class="form-control" type="password" name="contraseña" id="passLogin" placeholder="Contraseña" required>
+          <div class="invalid-feedback">
+            Ingrese una Contraseña valida
+          </div>
+        </div>
+        <button type="submit" id="submitLogin" class="btn btn-primary w-75 my-3">Ingresar</button>
+      </form>
+      <p> O </p>
+      <div class="" id="buttonDiv"></div>
     </div>
-    <!-- <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div> -->
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -54,7 +54,9 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+
   <script src="js/login.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 
 </html>
