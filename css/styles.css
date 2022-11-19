@@ -1,12 +1,7 @@
-.jumbotron,
 .card-body,
 .container,
 .site-header {
   font-family: 'Raleway', serif !important;
-}
-
-.jumbotron .display-4 {
-  font-weight: bold;
 }
 
 nav a {
@@ -26,87 +21,6 @@ nav a {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-}
-
-.jumbotron {
-  height: 50vh;
-  padding: 5em inherit;
-  margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
-}
-
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
-@media (max-width: 1433px) {
-  .jumbotron {
-    height: 45vh;
-  }
-}
-
-@media (max-width: 1289px) {
-  .jumbotron {
-    height: 42vh;
-  }
-}
-
-@media (max-width: 1150px) {
-  .jumbotron {
-    height: 38vh;
-  }
-}
-
-@media (max-width: 1011px) {
-  .jumbotron {
-    height: 30vh;
-  }
-}
-
-@media (max-width: 835px) {
-  .jumbotron {
-    height: 25vh;
-  }
-}
-
-@media (max-width: 716px) {
-  .jumbotron {
-    height: 25vh;
-  }
-}
-
-@media (max-width: 581px) {
-  .jumbotron {
-    height: 20vh;
-  }
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  text-shadow: 1px 1px 2px grey;
-}
-
-.jumbotron .lead {
-  font-size: 38px;
 }
 
 footer {
@@ -220,10 +134,57 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
-/* Código de Login */
-
 #imagenLogin {
   max-width: 400px;
+}
+
+#imagen1Index {
+  height: fit-content;
+  width: auto;
+}
+
+#imagen2Index {
+  width: 0;
+  height: 0;
+}
+
+#imagen3Index {
+  width: 0;
+  height: 0;
+}
+
+@media only screen and (max-width: 990px){
+
+  #imagen1Index {
+    height: 0;
+  }
+
+  #imagen2Index {
+    height: fit-content;
+    width: auto;
+  }
+
+  #imagen3Index {
+    height: 0;
+  }
+
+}
+
+@media only screen and (max-width: 768px){
+
+  #imagen1Index {
+    height: 0;
+  }
+
+  #imagen2Index {
+    height: 0;
+  }
+
+  #imagen3Index {
+    height: fit-content;
+    width: auto;
+  }
+
 }
 
 .form-login {
