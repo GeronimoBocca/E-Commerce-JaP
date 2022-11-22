@@ -66,7 +66,7 @@ function showCategoriesList() {
             `
         }
 
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        document.getElementById("catListContainer").innerHTML = htmlContentToAppend;
     }
 }
 

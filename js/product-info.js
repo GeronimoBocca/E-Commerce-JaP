@@ -3,6 +3,10 @@
 let prodInfo = [];
 let comentarios = [];
 
+// function comprarProducto() {
+
+// }
+
 // Setear ID del producto
 
 function setProdID(id) {
@@ -124,7 +128,9 @@ function crearInfo() {
 
     let infoAMostrar = "";
     infoAMostrar += `
+    <button class="btn btn-primary float-end" id="buttonComprarProd">Comprar</button>
         <h1 id="producto-nombre">${prodInfo.name}</h1>
+        
         <hr>
         <h5 class="elemento-titulo">Precio</h5>
         <p id="producto-precio" class="data">$ ${prodInfo.cost} - ${prodInfo.currency}</p>

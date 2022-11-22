@@ -199,8 +199,6 @@ a.custom-card:hover {
 
 #encabezado {
   font-family: 'Raleway', serif !important;
-  text-align: center;
-  margin-top: 2%;
 }
 
 #categorias-nombre {
@@ -350,9 +348,7 @@ a.custom-card:hover {
 }
 
 #inputBuscar {
-  float: left;
-  width: 250px;
-  height: 38px;
+  width: auto;
 }
 
 .articulosComprar {

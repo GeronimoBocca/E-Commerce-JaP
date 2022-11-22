@@ -1,8 +1,8 @@
 // Array de información
 
 let listaProductos = [];
-let min = document.getElementById("rangeFilterCountMin").value;
-let max = document.getElementById("rangeFilterCountMax").value;
+let min = document.getElementById("rangeCountMin").value;
+let max = document.getElementById("rangeCountMax").value;
 
 // Setear ID de producto
 
@@ -48,7 +48,7 @@ function showProductsList(array) {
         </div>
        `
     }
-    document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
+    document.getElementById("prodListContainer").innerHTML = htmlContentToAppend;
 }
 
 // Cuando el evento DOM carga: 
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (resultObj.status === "ok") {
             listaProductos = resultObj.data;
             showProductsList(listaProductos.products)
-            document.getElementById("categorias-nombre").innerHTML = "Verás aquí todos los productos de la categoría " + listaProductos.catName;
+            document.getElementById("nombreCategoria").innerHTML = "Verás aquí todos los productos de la categoría " + listaProductos.catName;
         }
     });
 
@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Al hacer click en el boton, se limpian los filtros por precio, dejandolos en su estado original
 
     document.getElementById("clearRangeFilter").addEventListener("click", () => {
-        document.getElementById("rangeFilterCountMin").value = null;
-        document.getElementById("rangeFilterCountMax").value = null;
+        document.getElementById("rangeCountMin").value = null;
+        document.getElementById("rangeCountMax").value = null;
         showProductsList(listaProductos.products);
     })
 });

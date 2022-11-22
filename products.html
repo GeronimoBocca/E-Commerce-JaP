@@ -48,7 +48,7 @@
   <main class="pb-5 container" id="main">
     <div class="text-center p-4">
       <h2 class="encabezado">Productos</h2>
-      <div id="categorias-nombre"></div>
+      <div id="nombreCategoria"></div>
     </div>
     <div class="container">
       <div class="row">
@@ -63,7 +63,6 @@
           </div>
         </div>
       </div>
-      <input type="search" class="form-control rounded" id="inputBuscar" placeholder="Buscar producto">
       <div class="row">
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container p-0 m-0"> 
@@ -71,22 +70,23 @@
               <p class="font-weight-normal text-end my-2">Precio</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-control" type="number" placeholder="min." id="rangeCountMin">
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              <input class="form-control" type="number" placeholder="máx." id="rangeCountMax">
             </div>
-            <div class="col-3 p-0">
+            <div class="col p-0">
               <div class="btn-group" role="group">
                 <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="list-group" id="prod-list-container">
+      <input type="search" class="form-control rounded mb-2" id="inputBuscar" placeholder="Buscar producto">
+      <div class="row list-group">
+        <div id="prodListContainer">
         </div>
       </div>
     </div>
