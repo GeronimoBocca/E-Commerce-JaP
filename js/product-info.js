@@ -3,10 +3,6 @@
 let prodInfo = [];
 let comentarios = [];
 
-// function comprarProducto() {
-
-// }
-
 // Setear ID del producto
 
 function setProdID(id) {
@@ -24,24 +20,36 @@ function crearHora() {
     let minutos = hoy.getMinutes()
     let segundos = hoy.getSeconds()
 
+
     if (hora < 10) {
         return hora = "0" + hora
     }
-
     if (minutos < 10) {
         return minutos = "0" + minutos
     }
-
     if (segundos < 10) {
         return segundos = "0" + segundos
     }
-
+    if (dia < 10) {
+        return dia = "0" + dia
+    }
+    if (mes < 10) {
+        return mes = "0" + mes
+    }
     document.getElementById("comFecha").innerHTML = anio + "-" + mes + "-" + dia + " " + hora + ":" + minutos + ":" + segundos;
 }
 
-
 function agregar() {
     let comentarioNuevo = {}
+    let crearDiv = ""
+
+    if (comentarios.length == 0) {
+        crearDiv += `
+        <div id="comFecha"></div
+        `
+        document.getElementById("comentarios-prod").innerHTML = crearDiv
+    }
+
     comentarioNuevo.product = JSON.parse(localStorage.getItem("prodID"))
     comentarioNuevo.score = JSON.parse(document.getElementById("cantidad").value)
     comentarioNuevo.description = document.getElementById("textarea").value
@@ -50,8 +58,37 @@ function agregar() {
     comentarioNuevo.dateTime = document.getElementById("comFecha").innerHTML
     comentarios.push(comentarioNuevo)
     crearComentarios()
+
     localStorage.setItem("comentarios", JSON.stringify(comentarios))
 };
+
+// Funcion para agregar un producto nuevo al carrito (Aun tiene fallos)
+// function comprarProducto() {
+//     let producto = {}
+//     let articles = []
+//     let json = {}
+
+//     json.id = JSON.parse(localStorage.getItem("prodID"))
+//     json.name = prodInfo.name
+//     json.count = 1
+//     json.unitCost = prodInfo.cost
+//     json.currency = prodInfo.currency
+//     json.image = prodInfo.images[0]
+//     articles.push(json)
+//     producto.user = 25801
+//     producto.articles = articles
+
+//     if (localStorage.getItem("Producto") !== null) {
+//         let comprado = JSON.parse(localStorage.getItem("Producto"))
+//         comprado.articles.push(json)
+//         console.log(comprado)
+//         localStorage.setItem("Producto", JSON.stringify(comprado))
+//     }
+//     else {
+//         localStorage.setItem("Producto", JSON.stringify(producto))
+//     }
+//     location.href = "cart.html"
+// }
 
 // Imagenes
 
@@ -74,15 +111,27 @@ function crearImagenes() {
 
 function crearComentarios() {
     let comentariosAMostrar = "";
-    for (let i = 0; i < comentarios.length; i++) {
-        let comentario = comentarios[i];
+
+    if (comentarios.length == 0) {
         comentariosAMostrar += `
         <div class="comentarios-prod">
-        <p class="fecha"><span id="comUser" class="comUser">${comentario.user}</span> - <span id="comFecha">${comentario.dateTime}</span> - <span id="comEstrella">` + crearEstrellas(comentario.score) + `</span> </p>
-        <p id="comDescripcion" class="descripcion">${comentario.description}</p>
+            <p class="text-center">Aun no hay ningun comentario. Sé el primero en comentar.</p>
         </div>
         `
         document.getElementById("comentarios-prod").innerHTML = comentariosAMostrar;
+    }
+    else {
+        for (let i = 0; i < comentarios.length; i++) {
+            let comentario = comentarios[i];
+            comentariosAMostrar += `
+            <div class="comentarios-prod">
+            <p class="fecha"><span id="comUser" class="comUser">${comentario.user}</span> - <span id="comFecha">${comentario.dateTime}</span> - <span id="comEstrella">` + crearEstrellas(comentario.score) + `</span> </p>
+            <p id="comDescripcion" class="descripcion">${comentario.description}</p>
+            </div>
+            `
+            document.getElementById("comentarios-prod").innerHTML = comentariosAMostrar;
+        }
+
     };
 }
 
@@ -128,8 +177,9 @@ function crearInfo() {
 
     let infoAMostrar = "";
     infoAMostrar += `
-    <button class="btn btn-primary float-end" id="buttonComprarProd">Comprar</button>
+    <button class="btn btn-primary float-end" id="buy">Comprar</button>
         <h1 id="producto-nombre">${prodInfo.name}</h1>
+        
         
         <hr>
         <h5 class="elemento-titulo">Precio</h5>
@@ -142,7 +192,7 @@ function crearInfo() {
         <p id="producto-vendido" class="data">${prodInfo.soldCount}</p>
         <h5 class="elemento-titulo">Imágenes ilustrativas</h5>
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div id="carousel" class="carousel-inner">`+ crearImagenes() +`
+        <div id="carousel" class="carousel-inner">`+ crearImagenes() + `
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -160,8 +210,6 @@ function crearInfo() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
-
     // Agarro el ID del producto
 
     let prodID = localStorage.getItem("prodID");
@@ -175,6 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
             crearRelacionados()
             document.getElementById("carousel").children[0].classList.add('active')
         }
+        // agregar al carrito
+        // let boton = document.getElementById("buy")
+        // boton.addEventListener("click", () => {
+        //     comprarProducto()
+        // })
     });
 
     // Llamo al JSON de los comentarios, usando la ID que agarré recien. Llamo a la funcion crearComentarios()
@@ -193,10 +246,9 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("textarea").value = ""
             document.getElementById("cantidad").value = 1
         }
-        
+
         else if (document.getElementById("textarea").value == "") {
             document.getElementById("textarea").classList.add("is-invalid")
-
         }
     })
 
@@ -204,4 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("textarea").classList.remove("is-invalid")
 
     })
+
+
 })

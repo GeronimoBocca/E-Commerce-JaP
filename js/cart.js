@@ -16,13 +16,13 @@ function crearCarrito(array) {
 		let articulo = array[i];
 		carritoAMostrar += `
 		<tr>
-			<th scope="row" id="imagenArticulo"><img src="${articulo.image}" width="50"></th>
-			<td id="nombreArticulo">${articulo.name}</td>
-			<td id="costoArticulo">${articulo.currency} ${articulo.unitCost}</td>
-				<td id="cantidadArticulo">
-				<input id="inputArticulo" class="form-control" type="number" value="${articulo.count}" min="1">
+			<th scope="row"><img src="${articulo.image}" width="50"></th>
+			<td class="nombreArticulo">${articulo.name}</td>
+			<td class="precioArticulo" >${articulo.currency} ${articulo.unitCost}</td>
+			<td>
+			<input class="form-control w-50" id="inputArticulo" type="number" value="${articulo.count}" min="1">
 			</td>
-			<td id="subtotalArticulo"><strong>${articulo.currency} <span id="subtotal">${articulo.unitCost}</span></strong></td>
+			<td><strong>${articulo.currency} <span id="subtotalArticulo">${articulo.unitCost}</span></strong></td>
 		</tr>
 		`
 		document.getElementById("tbody").innerHTML = carritoAMostrar
@@ -46,10 +46,10 @@ function cambiar() {
 	}
 
 	let total = precio + envio
-	document.getElementById("subtotal").innerHTML = precio
-	document.getElementById("subtotal-lista").innerHTML = "USD " + precio
-	document.getElementById("envio-lista").innerHTML = "USD " + envio
-	document.getElementById("total-lista").innerHTML = "USD " + total
+	document.getElementById("subtotalArticulo").innerHTML = Math.round(precio)
+	document.getElementById("subtotal-lista").innerHTML = "USD " + Math.round(precio)
+	document.getElementById("envio-lista").innerHTML = "USD " + Math.round(envio)
+	document.getElementById("total-lista").innerHTML = "USD " + Math.round(total)
 }
 
 function crearListaSubTotal() {
@@ -146,11 +146,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 	let usuario = "25801"
+	// let productoNuevo = JSON.parse(localStorage.getItem("Producto"))
 
 	getJSONData(CART_INFO_URL + usuario + EXT_TYPE).then(function (resultObj) {
 		if (resultObj.status === "ok") {
 			listaCarrito = resultObj.data;
+
+			// agregar producto
+			// if(productoNuevo !== null) {
+			// 	for (let i = 0; i < productoNuevo.articles.length; i++) {
+			// 		listaCarrito.articles.push(productoNuevo.articles[i])
+			// 	}
+			// }
+
 			crearCarrito(listaCarrito.articles)
+			// let inputs = document.getElementsByName("")
+			// console.log(inputs.value)
 			crearListaSubTotal()
 
 			document.getElementById("inputArticulo").addEventListener("change", () => {
@@ -179,11 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 	document.getElementById("enviarCompra").addEventListener("click", (e) => {
-		if(calle.value == "" || numero.value == "" || esquina.value == "" || !boton1.checked){
+		if (calle.value == "" || numero.value == "" || esquina.value == "" || !boton1.checked) {
 			e.preventDefault()
 			e.stopPropagation()
 		}
-		if(calle.value == "" || numero.value == "" || esquina.value == "" || !boton2.checked){
+		if (calle.value == "" || numero.value == "" || esquina.value == "" || !boton2.checked) {
 			e.preventDefault()
 			e.stopPropagation()
 		}
